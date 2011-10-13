@@ -18,10 +18,21 @@ then
   ./configure --enable-rubyinterp --enable-multibyte --with-features=huge
   make
   sudo make install
+
 else
   echo "*********************"
   echo "Vim is installed with ruby support"
   echo "*********************"
+fi
+
+path_includes_local_bin=$(echo $PATH | grep "/usr/local/bin")
+if [ -z $path_includes_local_bin ]; then
+  echo "Please add /usr/local/bin to your path "
+  echo "You can do this by editing your .bashrc, .profile, or .bash_profile in your ~/ directory."
+  echo "Depending on which file you user."
+
+  echo "Add or edit your current path line to look something like this"
+  echo "    export PATH=/usr/local/bin:$PATH"
 fi
 
 cd ~/
