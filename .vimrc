@@ -2,6 +2,7 @@
 " plugins under the ~/.vim/bundle directory
 call pathogen#infect()
 call pathogen#helptags()
+set wildignore+=node_modules,.git
 
 " enable syntastic
 let g:syntastic_enable_signs=1
@@ -15,11 +16,10 @@ let b:syntastic_c_cflags = ' -std=c99'
 
 " syntax highlighting
 syntax on
-colorscheme Tomorrow-Night-Eighties
-set background=dark
-set guifont=Monaco:h13
+colorscheme corporation 
+set guifont=Inconsolata:h16
 " lots of colors!
-let t_Co=256
+"let t_Co=256
 
 " ruby syntax in appropriate files
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
@@ -39,9 +39,13 @@ set shiftwidth=2
 " default sizes
 set columns=100
 set lines=35
+set colorcolumn=80
 
 " fold method
 set foldmethod=syntax
+set foldnestmax=4      "deepest fold is 10 levels"
+set nofoldenable 
+set nowrap 
 
 " show matching braces, brackets, etc
 set showmatch
@@ -69,3 +73,6 @@ let mapleader=","
 
 let g:EnhCommentifyBindInInsert="No" 
 
+map <F5> :SyntasticToggleMode<CR>:redraw!<CR>
+
+au BufNewFile,BufRead *.ejs set filetype=jst
